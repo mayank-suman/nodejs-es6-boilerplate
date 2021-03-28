@@ -2,11 +2,11 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
-import add from "../src/sum";
+import add from "./src/sum";
 
 app.get("/", (req, res) => {
   const val = add(1, 2);
-  res.send("Hello World!" + val);
+  res.send("Hello mayank!" + val);
 });
 
 app.listen(port, () => {

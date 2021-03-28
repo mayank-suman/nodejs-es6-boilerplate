@@ -4,8 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --exec babel-node server/index.js localhost 8080"
+    "clean": "rimraf dist",
+    "transpile": "babel server -d dist",
+    "build": "yarn clean && yarn transpile",
+    "serve": "yarn build && node dist/index.js",
+    "prod": "NODE_ENV=production && yarn serve",
+    "dev": "NODE_ENV=development && yarn serve",
+    "dev:watch": "nodemon"
   },
   "keywords": [],
   "author": "",
@@ -15,7 +20,8 @@
     "@babel/core": "^7.13.13",
     "@babel/node": "^7.13.13",
     "@babel/preset-env": "^7.13.12",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "rimraf": "^3.0.2"
   },
   "dependencies": {
     "express": "^4.17.1"
